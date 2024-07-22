@@ -1,38 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  border: 2px solid gold;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 5vh;
+  background-color: #4b4b4b;  
 }
 
-.App-link {
-  color: #61dafb;
+.scrunchContainer {
+  /* border: 2px solid magenta; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* scrunched state */
+.card-container {
+  /* border: 2px solid red; */
+  display: flex;
+  width: 95vw;
+  height: calc(304 / 1280 * 95vw);
+  /* height: 40vh; */
+  transform: scaleX(0.3); /* Default scrunched state */
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Hover effect to unscrunch */
+.scrunchContainer:hover .card-container {
+  transform: scaleX(1);
+}
+
+/* scrunched state */
+.fold  {
+  border: 2px solid #4b4b4b;
+  flex: 1;
+  background-size: cover;
+  height: 100%;
+  transition: transform 0.4s ease-in-out;
+}
+.fold:nth-child(even) {
+  transform: skewY(-15deg)
+}
+.fold:nth-child(odd) {
+  transform: skewY(15deg)
+}
+
+.scrunchContainer:hover .fold:nth-child(odd) {
+  transform: skewY(0deg);
+}
+
+.scrunchContainer:hover .fold:nth-child(even) {
+  transform: skewY(0deg);
 }
